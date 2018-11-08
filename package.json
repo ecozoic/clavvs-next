@@ -1,0 +1,26 @@
+{
+  "name": "clavvs-next",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "prebuild": "rimraf .next",
+    "build": "next build",
+    "start": "next start",
+    "preexport": "rimraf out",
+    "export": "next export",
+    "serve": "serve -p 8080 out"
+  },
+  "dependencies": {
+    "next": "^7.0.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "styled-components": "^4.0.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.8.0",
+    "prettier": "^1.15.1",
+    "rimraf": "^2.6.2",
+    "serve": "^10.0.2"
+  }
+}
