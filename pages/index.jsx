@@ -1,10 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+import Head from 'next/head';
 
-const Wrapper = styled.div`
-  color: blue;
-`;
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Hero from '../components/Hero';
 
-const Index = () => <Wrapper>Hello world</Wrapper>;
+const Index = () => (
+  <>
+    <Head>
+      <title>CLAVVS</title>
+    </Head>
+    <Header />
+    <main>
+      <Hero />
+    </main>
+    <Footer />
+  </>
+);
 
 export default Index;
