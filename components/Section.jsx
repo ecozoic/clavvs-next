@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import Contents from './Contents';
+import Content from './Content';
 
 const SectionHeader = styled.h2`
   border-bottom: 1px solid ${props => props.theme.colors.purple};
@@ -18,7 +18,9 @@ const Section = ({ section }) => (
   <section className="section">
     <div className="container">
       <SectionHeader>{section.header}</SectionHeader>
-      {/*<Contents contents={this.props.section.contents} />*/}
+      {(section.contents || []).map(content => (
+        <Content key={content.id} content={content} />
+      ))}
     </div>
   </section>
 );
