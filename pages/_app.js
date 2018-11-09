@@ -5,8 +5,9 @@ import { ThemeProvider } from 'styled-components';
 
 import theme from '../lib/theme';
 import { initGA, logPageView } from '../lib/analytics';
+import withFirebaseStore from '../lib/with-firebase-store';
 
-export default class MyApp extends App {
+class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -35,3 +36,5 @@ export default class MyApp extends App {
     );
   }
 }
+
+export default withFirebaseStore(MyApp);
