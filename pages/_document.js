@@ -48,8 +48,8 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
           />
 
           {/* font-awesome */}
@@ -61,6 +61,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          {/* songkick */}
           <script src="https://widget.songkick.com/widget.js" />
         </body>
       </html>
