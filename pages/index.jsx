@@ -37,7 +37,26 @@ class Index extends React.Component {
     const footerLinks = (await footerSnapshot).docs.map(mapDocToObject);
     const heroLinks = (await heroSnapshot).docs.map(mapDocToObject);
     const socialLinks = (await socialSnapshot).docs.map(mapDocToObject);
-    const sections = (await sectionSnapshot).docs.map(mapDocToObject);
+
+    // handle contents subcollections
+    const contentSnapshotPromises = [];
+    const sections = [];
+
+    (await sectionSnapshot).docs.forEach(doc => {
+      contentSnapshotPromises.push(
+        doc.ref
+          .collection('contents')
+          .where('enabled', '==', true)
+          .orderBy('sortIndex')
+          .get(),
+      );
+      sections.push(mapDocToObject(doc));
+    });
+
+    const contentSnapshots = await Promise.all(contentSnapshotPromises);
+    contentSnapshots.forEach((contentSnapshot, idx) => {
+      sections[idx].contents = contentSnapshot.docs.map(mapDocToObject);
+    });
 
     return { footerLinks, heroLinks, socialLinks, sections };
   }

@@ -26,6 +26,9 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="description" content={description} />
 
+          {/* favicon */}
+          <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+
           {/* twitter card */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@clavvsduo" />
