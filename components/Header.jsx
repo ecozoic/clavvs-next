@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import throttle from 'lodash.throttle';
 import classnames from 'classnames';
 
-// import SocialLink from './SocialLink';
+import SocialLink from './SocialLink';
 
 const SCROLL_THROTTLE_MS = 100;
 const SCROLL_THRESHOLD_PX = 80;
@@ -125,13 +125,13 @@ class Header extends React.Component {
         >
           <div className="navbar-start" />
           <div className="navbar-end">
-            {/* this.props.store.social.sortedLinks.map(link => (
+            {this.props.links.map(link => (
               <SocialLink
                 key={link.id}
                 link={link}
                 transparent={isTransparent}
               />
-            )) */}
+            ))}
           </div>
         </NavMenu>
       </Nav>

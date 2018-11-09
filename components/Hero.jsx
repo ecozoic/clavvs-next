@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import HeroButton from './HeroButton';
+import HeroButton from './HeroButton';
 
 const HeroImage = styled.section`
   background: url(/static/clavvs.jpg) no-repeat center / cover;
@@ -26,22 +26,18 @@ const ButtonContainer = styled.div`
   }
 `;
 
-class Hero extends React.Component {
-  render() {
-    return (
-      <HeroImage className="hero is-fullheight">
-        <div className="hero-head" />
-        <div className="hero-body" />
-        <div className="hero-foot">
-          <ButtonContainer className="container">
-            {/*this.props.store.hero.sortedLinks.map(link => (
-              <HeroButton key={link.id} link={link} />
-            ))*/}
-          </ButtonContainer>
-        </div>
-      </HeroImage>
-    );
-  }
-}
+const Hero = ({ links }) => (
+  <HeroImage className="hero is-fullheight">
+    <div className="hero-head" />
+    <div className="hero-body" />
+    <div className="hero-foot">
+      <ButtonContainer className="container">
+        {links.map(link => (
+          <HeroButton key={link.id} link={link} />
+        ))}
+      </ButtonContainer>
+    </div>
+  </HeroImage>
+);
 
 export default Hero;

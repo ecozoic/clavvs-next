@@ -1,6 +1,7 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { dom } from '@fortawesome/fontawesome-svg-core';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -47,6 +48,9 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
           />
+
+          {/* font-awesome */}
+          <style>{dom.css()}</style>
 
           {/* styled-components */}
           {this.props.styleTags}

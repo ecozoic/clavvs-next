@@ -2,10 +2,13 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import Router from 'next/router';
 import { ThemeProvider } from 'styled-components';
+import { config } from '@fortawesome/fontawesome-svg-core';
 
 import theme from '../lib/theme';
 import { initGA, logPageView } from '../lib/analytics';
 import withFirebaseStore from '../lib/with-firebase-store';
+
+config.autoAddCss = false;
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
