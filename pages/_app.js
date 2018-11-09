@@ -8,6 +8,10 @@ import theme from '../lib/theme';
 import { initGA, logPageView } from '../lib/analytics';
 import withFirebaseStore from '../lib/with-firebase-store';
 
+import GlobalStyle from '../components/GlobalStyle';
+
+// tell font-awesome not to add css when icons are requested
+// b/c we are pre-rendering that CSS on the server in _document.js
 config.autoAddCss = false;
 
 class MyApp extends App {
@@ -33,7 +37,10 @@ class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <>
+            <GlobalStyle />
+            <Component {...pageProps} />
+          </>
         </ThemeProvider>
       </Container>
     );
