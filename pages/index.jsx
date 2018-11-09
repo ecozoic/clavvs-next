@@ -13,6 +13,7 @@ const Index = () => (
     <Header />
     <main>
       <Hero />
+      <div>{process.env.TEST}</div>
     </main>
     <Footer />
   </>
