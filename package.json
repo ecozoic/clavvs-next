@@ -12,7 +12,7 @@
     "serve": "serve -p 8080 out",
     "clean": "rimraf .next out",
     "start:heroku": "next start -p $PORT",
-    "heroku:postbuild": "yarn build"
+    "postinstall": "yarn build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
