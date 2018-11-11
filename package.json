@@ -3,16 +3,16 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "postinstall": "yarn build",
     "dev": "next",
     "prebuild": "rimraf .next",
     "build": "next build",
     "analyze": "cross-env ANALYZE=1 next build",
-    "start": "next start",
     "preexport": "rimraf out",
     "export": "next export",
     "serve": "serve -p 8080 out",
-    "clean": "rimraf .next out"
+    "clean": "rimraf .next out",
+    "start:heroku": "next start -p $PORT",
+    "heroku:postbuild": "yarn build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
