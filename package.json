@@ -11,6 +11,7 @@
     "export": "next export",
     "serve": "serve -p 8080 out",
     "clean": "rimraf .next out",
+    "start": "next start",
     "start:heroku": "next start -p $PORT",
     "postinstall": "yarn build"
   },

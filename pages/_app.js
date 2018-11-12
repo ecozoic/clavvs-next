@@ -28,7 +28,8 @@ class MyApp extends App {
   componentDidMount() {
     initGA();
     logPageView();
-    Router.router.events.on('routeChangeComplete', logPageView);
+    // TODO: this line sometimes causes client to crash b/c it runs multiple times
+    // Router.router.events.on('routeChangeComplete', logPageView);
   }
 
   render() {
