@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 
+import FirebaseContext from '../lib/firebase-context';
+
 const mapDocToObject = doc => ({ id: doc.id, ...doc.data() });
 
 class Index extends React.Component {
@@ -63,7 +65,7 @@ class Index extends React.Component {
 
   render() {
     return (
-      <>
+      <FirebaseContext.Provider value={this.props}>
         <Head>
           <title>CLAVVS</title>
         </Head>
@@ -75,7 +77,7 @@ class Index extends React.Component {
           ))}
         </main>
         <Footer links={this.props.footerLinks} />
-      </>
+      </FirebaseContext.Provider>
     );
   }
 }

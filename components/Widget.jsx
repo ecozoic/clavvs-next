@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Mailchimp from './widgets/Mailchimp';
+import Socials from './widgets/Socials';
 import Songkick from './widgets/Songkick';
 import Soundcloud from './widgets/Soundcloud';
 import SpotifyFollow from './widgets/SpotifyFollow';
@@ -24,6 +25,9 @@ const Widget = ({ name, props }) => {
       break;
     case 'spotify-player':
       widget = SpotifyPlayer;
+      break;
+    case 'socials':
+      widget = Socials;
       break;
     default:
       widget = null;
