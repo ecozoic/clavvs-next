@@ -1,9 +1,23 @@
 import React from 'react';
 
+import pollFor from '../../lib/poll-for';
+
 class Songkick extends React.Component {
   componentDidMount() {
-    const widget = new window.SongkickWidget.Injector();
-    widget.loadIFrame();
+    this.unsubscribe = pollFor(
+      () => window.SongkickWidget && window.SongkickWidget.Injector,
+      () => {
+        const widget = new window.SongkickWidget.Injector();
+        widget.loadIFrame();
+      },
+      250,
+    );
+  }
+
+  componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
   }
 
   render() {
