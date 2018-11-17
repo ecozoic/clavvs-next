@@ -8,9 +8,12 @@ import Section from '../components/Section';
 
 import FirebaseContext from '../lib/firebase-context';
 import mapDocToObject from '../lib/map-doc-to-object';
+import { TITLE } from '../lib/constants';
 
 class Index extends React.Component {
-  static async getInitialProps({ db }) {
+  static async getInitialProps(ctx) {
+    const db = ctx.db;
+
     const footerSnapshot = db
       .collection('footer-links')
       .where('enabled', '==', true)
@@ -66,7 +69,7 @@ class Index extends React.Component {
     return (
       <FirebaseContext.Provider value={this.props}>
         <Head>
-          <title>CLAVVS</title>
+          <title>{TITLE}</title>
         </Head>
         <Header links={this.props.socialLinks} />
         <main>

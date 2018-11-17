@@ -3,58 +3,30 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { dom } from '@fortawesome/fontawesome-svg-core';
 
-import { getOrCreateStore } from '../lib/with-firebase-store';
-import mapDocToObject from '../lib/map-doc-to-object';
-import createTheme from '../lib/create-theme';
+import { DESCRIPTION } from '../lib/constants';
 
 export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }) {
+  static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
-    const page = renderPage(App => props =>
+    const documentProps = ctx.renderPage(App => props =>
       sheet.collectStyles(<App {...props} />),
     );
     const styleTags = sheet.getStyleElement();
 
-    const db = getOrCreateStore();
-    const themesSnapshot = db
-      .collection('themes')
-      .where('enabled', '==', true)
-      .get();
-    const theme = createTheme(
-      (await themesSnapshot).docs.map(mapDocToObject)[0],
-    );
-
-    return { ...page, styleTags, theme };
+    return { ...documentProps, styleTags };
   }
 
   render() {
-    const title = 'CLAVVS';
-    const description = 'hypnotic alt pop // spectral trip hop';
-    const image = this.props.theme.backgroundImage;
-
     return (
       <html lang="en">
         <Head>
           {/* meta */}
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="description" content={description} />
+          <meta name="description" content={DESCRIPTION} />
 
           {/* favicon */}
           <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
-
-          {/* twitter card */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@clavvsduo" />
-          <meta name="twitter:title" content={title} />
-          <meta name="twitter:description" content={description} />
-          <meta name="twitter:image" content={image} />
-
-          {/* facebook open graph */}
-          <meta property="og:url" content="https://clavvs.com" />
-          <meta property="og:title" content={title} />
-          <meta property="og:description" content={description} />
-          <meta property="og:image" content={image} />
 
           {/* fonts + css */}
           <link
