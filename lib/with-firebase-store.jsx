@@ -5,7 +5,7 @@ import 'firebase/firestore';
 const isServer = typeof window === 'undefined';
 const __NEXT_FIREBASE_STORE__ = '__NEXT_FIREBASE_STORE__';
 
-function initializeStore() {
+export function initializeStore() {
   firebase.initializeApp({
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -21,7 +21,7 @@ function initializeStore() {
   return db;
 }
 
-function getOrCreateStore() {
+export function getOrCreateStore() {
   // Create store if unavailable on the server and set it on the global object
   if (isServer) {
     if (!global[__NEXT_FIREBASE_STORE__]) {

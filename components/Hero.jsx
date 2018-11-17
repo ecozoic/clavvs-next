@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import HeroButton from './HeroButton';
 
 const HeroImage = styled.section`
-  background: url(/static/clavvs.jpg) no-repeat center / cover;
-  border-bottom: 1px solid ${props => props.theme.colors.purple};
+  background: url(${props => props.theme.backgroundImage}) no-repeat center /
+    cover;
+  border-bottom: 1px solid ${props => props.theme.colors.primary};
   @media (max-width: ${props => props.theme.breakpoints.desktop}) {
     background-position-x: 75%;
   }

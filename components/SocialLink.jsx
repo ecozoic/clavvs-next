@@ -12,16 +12,16 @@ const NavItem = styled.div`
   & > a {
     color: ${props =>
       props.transparent
-        ? props.theme.colors.blackTransparent
-        : props.theme.colors.white};
+        ? props.theme.colors.backgroundTransparent
+        : props.theme.colors.foreground};
     transition: all ${props => props.theme.transition.duration}
       ${props => props.theme.transition.easing};
 
     &:hover {
       color: ${props =>
         props.transparent
-          ? props.theme.colors.white
-          : props.theme.colors.purple};
+          ? props.theme.colors.foreground
+          : props.theme.colors.primary};
     }
   }
 `;

@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background-color: ${props => props.theme.colors.purple} !important;
-  color: ${props => props.theme.colors.white} !important;
+  background-color: ${props => props.theme.colors.primary} !important;
+  color: ${props => props.theme.colors.foreground} !important;
 `;
 
 const Input = styled.input`
   &:focus {
-    border-color: ${props => props.theme.colors.purple};
-    box-shadow: 0 0 0 0.125em ${props => props.theme.colors.purpleTransparent};
+    border-color: ${props => props.theme.colors.primary};
+    box-shadow: 0 0 0 0.125em ${props => props.theme.colors.primaryTransparent};
   }
 `;
 

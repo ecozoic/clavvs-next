@@ -1,12 +1,14 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Router from 'next/router';
 import { ThemeProvider } from 'styled-components';
 import { config } from '@fortawesome/fontawesome-svg-core';
 
-import theme from '../lib/theme';
+import createTheme from '../lib/create-theme';
 import { initGA, logPageView } from '../lib/analytics';
-import withFirebaseStore from '../lib/with-firebase-store';
+import withFirebaseStore, {
+  getOrCreateStore,
+} from '../lib/with-firebase-store';
+import mapDocToObject from '../lib/map-doc-to-object';
 
 import GlobalStyle from '../components/GlobalStyle';
 
@@ -22,7 +24,16 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    return { pageProps };
+    const db = getOrCreateStore();
+    const themesSnapshot = db
+      .collection('themes')
+      .where('enabled', '==', true)
+      .get();
+    const theme = createTheme(
+      (await themesSnapshot).docs.map(mapDocToObject)[0],
+    );
+
+    return { pageProps, theme };
   }
 
   componentDidMount() {
@@ -33,7 +44,7 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, theme } = this.props;
 
     return (
       <Container>

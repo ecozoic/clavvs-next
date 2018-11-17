@@ -13,11 +13,11 @@ const SocialLink = styled.div`
   font-size: ${props => props.theme.scale.biggest}rem;
   text-align: center;
   & > a {
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.foreground};
     transition: color ${props => props.theme.transition.duration}
       ${props => props.theme.transition.easing};
     &:hover {
-      color: ${props => props.theme.colors.purple};
+      color: ${props => props.theme.colors.primary};
     }
   }
 `;

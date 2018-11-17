@@ -3,20 +3,34 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { dom } from '@fortawesome/fontawesome-svg-core';
 
+import { getOrCreateStore } from '../lib/with-firebase-store';
+import mapDocToObject from '../lib/map-doc-to-object';
+import createTheme from '../lib/create-theme';
+
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static async getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />),
     );
     const styleTags = sheet.getStyleElement();
-    return { ...page, styleTags };
+
+    const db = getOrCreateStore();
+    const themesSnapshot = db
+      .collection('themes')
+      .where('enabled', '==', true)
+      .get();
+    const theme = createTheme(
+      (await themesSnapshot).docs.map(mapDocToObject)[0],
+    );
+
+    return { ...page, styleTags, theme };
   }
 
   render() {
     const title = 'CLAVVS';
     const description = 'hypnotic alt pop // spectral trip hop';
-    const image = '/static/clavvs.jpg';
+    const image = this.props.theme.backgroundImage;
 
     return (
       <html lang="en">

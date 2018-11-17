@@ -7,8 +7,7 @@ import Hero from '../components/Hero';
 import Section from '../components/Section';
 
 import FirebaseContext from '../lib/firebase-context';
-
-const mapDocToObject = doc => ({ id: doc.id, ...doc.data() });
+import mapDocToObject from '../lib/map-doc-to-object';
 
 class Index extends React.Component {
   static async getInitialProps({ db }) {
