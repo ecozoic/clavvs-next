@@ -11,11 +11,11 @@ const SCROLL_THRESHOLD_PX = 80;
 
 const Nav = styled.nav`
   background-color: ${props =>
-    props.transparent ? 'transparent' : props.theme.colors.black};
+    props.transparent ? 'transparent' : props.theme.colors.background};
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: ${props =>
-    props.transparent ? 'transparent' : props.theme.colors.purple};
+    props.transparent ? 'transparent' : props.theme.colors.primary};
   transition: ${props => props.theme.transition.duration}
     ${props => props.theme.transition.easing};
 `;
@@ -31,14 +31,16 @@ const Logo = styled.img`
 const Burger = styled.div`
   color: ${props =>
     props.transparent
-      ? props.theme.colors.blackTransparent
-      : props.theme.colors.white};
+      ? props.theme.colors.background
+      : props.theme.colors.foreground};
   height: auto;
   transition: all ${props => props.theme.transition.duration}
     ${props => props.theme.transition.easing};
   &:hover {
     color: ${props =>
-      props.transparent ? props.theme.colors.white : props.theme.colors.purple};
+      props.transparent
+        ? props.theme.colors.foreground
+        : props.theme.colors.primary};
   }
 `;
 
@@ -47,14 +49,14 @@ const NavMenu = styled.div`
   @media screen and (max-width: 1087px) {
     &.is-active {
       background-color: ${props =>
-        props.transparent ? 'transparent' : props.theme.colors.purple};
+        props.transparent ? 'transparent' : props.theme.colors.primary};
       display: inline-block;
       position: absolute;
       right: 0;
       & .navbar-item > a {
-        color: ${props => props.theme.colors.black} !important;
+        color: ${props => props.theme.colors.background} !important;
         &:hover {
-          color: ${props => props.theme.colors.white} !important;
+          color: ${props => props.theme.colors.foreground} !important;
         }
       }
     }

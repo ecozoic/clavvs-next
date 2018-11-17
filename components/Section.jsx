@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Content from './Content';
 
 const SectionHeader = styled.h2`
-  border-bottom: 1px solid ${props => props.theme.colors.purple};
-  color: ${props => props.theme.colors.white};
+  border-bottom: 1px solid ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.foreground};
   font-size: ${props => props.theme.scale.biggest}rem;
   margin-bottom: ${props => props.theme.scale.biggest}rem;
   margin-left: auto;

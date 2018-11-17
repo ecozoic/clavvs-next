@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import FooterItem from './FooterItem';
 
 const StyledFooter = styled.footer`
-  background-color: ${props => props.theme.colors.black};
-  border-top: 1px solid ${props => props.theme.colors.purple};
-  color: ${props => props.theme.colors.gray};
+  background-color: ${props => props.theme.colors.background};
+  border-top: 1px solid ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.secondary};
   padding-bottom: 3rem;
 `;
 
