@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const ButtonLink = styled.a`
   background-color: transparent;
-  border: 4px solid ${props => props.theme.colors.backgroundTransparent};
-  color: ${props => props.theme.colors.backgroundTransparent};
+  border: 4px solid ${props => props.theme.colors.foregroundTransparent};
+  color: ${props => props.theme.colors.foregroundTransparent};
   display: inline-block;
   font-size: ${props => props.theme.scale.bigger}rem;
   font-weight: ${props => props.theme.font.weights.bold};

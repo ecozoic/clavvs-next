@@ -31,7 +31,7 @@ const Logo = styled.img`
 const Burger = styled.div`
   color: ${props =>
     props.transparent
-      ? props.theme.colors.background
+      ? props.theme.colors.foregroundTransparent
       : props.theme.colors.foreground};
   height: auto;
   transition: all ${props => props.theme.transition.duration}
