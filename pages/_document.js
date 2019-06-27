@@ -25,6 +25,12 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="description" content={DESCRIPTION} />
 
+          {/* g-suite */}
+          <meta
+            name="google-site-verification"
+            content="spEqvStdWwbQvTSi330gKnU41sAo1nOvpvHGnmfdVuA"
+          />
+
           {/* favicon */}
           <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 
